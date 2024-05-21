@@ -5,9 +5,10 @@ import { useState } from "react";
 
 import MenuLink from "./MenuLink";
 import useLoginModal from "@/app/hooks/useLoginModal";
+import useSignupModal from "@/app/hooks/useSignupModal";
 /* import LogoutButton from "../LogoutButton";
 
-import useSignupModal from "@/app/hooks/useSignupModal"; */
+ */
 
 interface UserNavProps {
   userId?: string | null;
@@ -16,7 +17,7 @@ interface UserNavProps {
 const UserNav: React.FC<UserNavProps> = ({ userId }) => {
   const router = useRouter();
   const loginModal = useLoginModal();
-    /*const signupModal = useSignupModal(); */
+  const signupModal = useSignupModal();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -58,7 +59,11 @@ const UserNav: React.FC<UserNavProps> = ({ userId }) => {
             loginModal.open();
         
           }} />
-          <MenuLink label='Sign in' onClick={() => console.log("Clicked.")} />
+          <MenuLink label='Sign in' onClick={() => {
+            setIsOpen(false);
+            signupModal.open();
+          
+          }} />
         </div>
       )}
     </div>
