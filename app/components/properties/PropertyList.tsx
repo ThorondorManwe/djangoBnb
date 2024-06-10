@@ -19,8 +19,6 @@ const PropertyList = () => {
     const getProperties = async () => {
         const tmpProperties = await apiService.get('/api/properties/');
 
-        console.log('tmpProperties', tmpProperties);
-
         setProperties(tmpProperties);
     };
 
@@ -29,8 +27,6 @@ const PropertyList = () => {
 
         getProperties();
     }, []);
-
-    console.log('properties', properties);
 
     return (
         <div>
